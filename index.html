@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <p>Parth</p>
+    Enter Text: <input type="text" id="txt" onchange="fetchData()">
+    <div class="cm" id="cm">
+
+    </div>
+    <script>
+        async function fetchData() {
+            const text = document.getElementById('txt').value;
+            const resss = await fetch('https://qrbackend-keyuraval.vercel.app/qr/?text=' + text);
+            const data = await resss.json();
+            console.log(data);
+            document.getElementById('cm').innerHTML = data.key;
+        }
+    </script>
+</body>
+
+</html>
